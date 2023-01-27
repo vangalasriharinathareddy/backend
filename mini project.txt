@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>JavaScript sample registration form validation </title>
+<script type='text/javascript'>
+function formValidation()
+{
+var firstnamename = document.form1.firstname;
+var middlename = document.form1.middlename;
+var lastname = document.form1.lastname;
+var uemail = document.form1.email;
+var passid = document.form1.passid;
+var uAdmin = document.form1.Admin;
+var uDepartment = document.form1.Department;
+var cctime  = document.form1.ctime;
+var uutime  = document.form1.utime;
+if(allLetter(fname))
+{
+if(allLetter(mname))
+{
+if(allLetter(lname))
+{
+if(ValidateEmail(uemail))
+{
+if(passid_validation(passid,6,12))
+{
+if(allLetter(Admin))
+{
+if(allLetter(uDepartment))
+{
+
+}
+}
+}
+}
+}
+}
+return false;
+}
+function allLetter(fname)
+{
+var letters = /^[A-Za-z]+$/;
+if(fname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Please input alphabet characters only');
+fname.focus();
+return false;
+}
+}
+function allLetter(mname)
+{
+var letters = /^[A-Za-z]+$/;
+if(mname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Please input alphabet characters only');
+mname.focus();
+return false;
+}
+}
+function allLetter(lname)
+{
+var letters = /^[A-Za-z]+$/;
+if(lname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Please input alphabet characters only');
+lname.focus();
+return false;
+}
+}
+function ValidateEmail(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(uemail.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+uemail.focus();
+return false;
+}
+} 
+function passid_validation(passid,mx,my)
+{
+var passid_len = passid.value.length;
+if (passid_len == 0 ||passid_len >= my || passid_len < mx)
+{
+alert("Password should not be empty / length be between "+mx+" to "+my);
+passid.focus();
+return false;
+}
+return true;
+}
+function allLetter(Admin)
+{
+var letters = /^[A-Za-z]+$/;
+if(Admin.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Please input alphabet characters only');
+Admin.focus();
+return false;
+}
+}
+function Departmentselect(Department)
+{
+if(Department.value == "Default")
+{
+alert('Select your country from the list');
+uDepartment.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+//function uctime(time1,time2)
+//{
+//return time2.uctime()- time1.uctime();
+//}
+//function uutime(time1,time2)
+//
+//return time2.uutime()- time1.uutime();
+//
+function  uctime() {
+	 let date = new Date();
+	 var curr_time= date.getHours()+":"+ date.getMinutes();
+	 documentById("p1").innerHTML = curr_time;
+	 //return true;
+    }
+function  uutime() {
+	 let date = new Date();
+	 var curr_time= date.getHours()+":"+ date.getMinutes();
+	 documentById("p1").innerHTML = curr_time;
+	 //return true;
+    }
+</script>
+</head>
+<body>
+<form name='form1' onSubmit='return formValidation()' >
+<table width="500" cellpadding="3" style="border-collapse:collapse;">
+<tr>
+<td>firstname</td>
+<td><input type="text" name="firstname" size="50" /></td>
+</tr>
+<tr>
+<td>middlename</td>
+<td><input type="text" name="middlename" size="50" /></td>
+</tr>
+<tr>
+<td>lastname</td>
+<td><input type="text" name="lastname" size="50" /></td>
+</tr>
+<tr>
+<td>Email</td>
+<td><input type="text" name="email" size="50" /></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="passid" size="12" value=""/></td>
+</tr>
+<tr>
+<td>Admin</td>
+<td><input type="text" name="Admin" size="50" /></td>
+</tr>
+<tr>
+<td>Department</td>
+<td><input type="text" name="Department" size="50" /></td>
+</tr> 
+<tr>
+    <td><h2 >current Time : </h2></td>
+    <td><input type = "submit" name = "ctime" onsubmit = "uutime()"></td>
+	<td><p id = "p1"></p></td>
+</tr>
+<tr>
+    <td><h2 >Updated Time : </h2></td>
+	<td><input type = "submit" name = "utime" onsubmit = "uctime()"></td>
+	<td><p id = "p1"></p></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
